@@ -1,0 +1,1941 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>9.4 Passing pod metadata to the application via the Downward API · Kubernetes实战（第二版）</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="wangwei17">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Using_projected_volumes_to_combine_volumes_into_one.html" />
+    
+    
+    <link rel="prev" href="Using_Secrets_to_pass_sensitive_data_to_containers.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://wangwei1237.gitee.io/" target="_blank" class="custom-link">17哥的个人网站</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Welcome</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="Welcome.html">
+            
+                <a href="Welcome.html">
+            
+                    
+                    Welcome
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 1: First Time On a Boat: Introduction to Kubernetes</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="Introducing_Kubernetes_0.html">
+            
+                <a href="Introducing_Kubernetes_0.html">
+            
+                    
+                    1 Introducing Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="Introducing_Kubernetes_1.html">
+            
+                <a href="Introducing_Kubernetes_1.html">
+            
+                    
+                    1.1 Introducing Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="Understanding_Kubernetes.html">
+            
+                <a href="Understanding_Kubernetes.html">
+            
+                    
+                    1.2 Understanding Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="Introducing_Kubernetes_into_your_organization.html">
+            
+                <a href="Introducing_Kubernetes_into_your_organization.html">
+            
+                    
+                    1.3 Introducing Kubernetes into your organization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="Summary_1.html">
+            
+                <a href="Summary_1.html">
+            
+                    
+                    1.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="Understanding_containers.html">
+            
+                <a href="Understanding_containers.html">
+            
+                    
+                    2 Understanding containers
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="Introducing_containers.html">
+            
+                <a href="Introducing_containers.html">
+            
+                    
+                    2.1 Introducing containers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="Exploring_containers_hands-on.html">
+            
+                <a href="Exploring_containers_hands-on.html">
+            
+                    
+                    2.2 Exploring containers hands-on
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="Understanding_what_makes_containers_possible.html">
+            
+                <a href="Understanding_what_makes_containers_possible.html">
+            
+                    
+                    2.3 Understanding what makes containers possible
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="Summary_2.html">
+            
+                <a href="Summary_2.html">
+            
+                    
+                    2.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="Deploying_your_first_application.html">
+            
+                <a href="Deploying_your_first_application.html">
+            
+                    
+                    3 DEPLOYING YOUR FIRST APPLICATION
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="Deploying_a_Kubernetes_cluster.html">
+            
+                <a href="Deploying_a_Kubernetes_cluster.html">
+            
+                    
+                    3.1 Deploying a Kubernetes cluster
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="Interacting_with_Kubernetes.html">
+            
+                <a href="Interacting_with_Kubernetes.html">
+            
+                    
+                    3.2 Interacting with Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="Running_your_first_application_on_Kubernetes.html">
+            
+                <a href="Running_your_first_application_on_Kubernetes.html">
+            
+                    
+                    3.3  Running your first application on Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="Summary_3.html">
+            
+                <a href="Summary_3.html">
+            
+                    
+                    3.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 2: Learning the Ropes: Kubernetes API Objects</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="Introducing_the_Kubernetes_API_Objects.html">
+            
+                <a href="Introducing_the_Kubernetes_API_Objects.html">
+            
+                    
+                    4. Introducing the Kubernetes API Objects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="Getting_familiar_with_the_Kubernetes_API.html">
+            
+                <a href="Getting_familiar_with_the_Kubernetes_API.html">
+            
+                    
+                    4.1 Getting familiar with the Kubernetes API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="Examining_an_objects_individual_properties.html">
+            
+                <a href="Examining_an_objects_individual_properties.html">
+            
+                    
+                    4.2 Examining an object’s individual properties
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="Observing_cluster_events_via_Event_objects.html">
+            
+                <a href="Observing_cluster_events_via_Event_objects.html">
+            
+                    
+                    4.3 Observing cluster events via Event objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="Summary_4.html">
+            
+                <a href="Summary_4.html">
+            
+                    
+                    4.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="Running_applications_in_Pods.html">
+            
+                <a href="Running_applications_in_Pods.html">
+            
+                    
+                    5. Running applications in Pods
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="Understanding_pods.html">
+            
+                <a href="Understanding_pods.html">
+            
+                    
+                    5.1  Understanding pods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="Creating_pods_from_YAML_or_JSON_files.html">
+            
+                <a href="Creating_pods_from_YAML_or_JSON_files.html">
+            
+                    
+                    5.2 Creating pods from YAML or JSON files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="Interacting_with_the_application_and_the_pod.html">
+            
+                <a href="Interacting_with_the_application_and_the_pod.html">
+            
+                    
+                    5.3 Interacting with the application and the pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="Running_multiple_containers_in_a_pod.html">
+            
+                <a href="Running_multiple_containers_in_a_pod.html">
+            
+                    
+                    5.4 Running multiple containers in a pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.5" data-path="Running_additional_containers_at_pod_startup.html">
+            
+                <a href="Running_additional_containers_at_pod_startup.html">
+            
+                    
+                    5.5 Running additional containers at pod startup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.6" data-path="Deleting_pods_and_other_objects.html">
+            
+                <a href="Deleting_pods_and_other_objects.html">
+            
+                    
+                    5.6 Deleting pods and other objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.7" data-path="Summary_5.html">
+            
+                <a href="Summary_5.html">
+            
+                    
+                    5.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="Managing_the_lifecycle_of_the_Pods_containers.html">
+            
+                <a href="Managing_the_lifecycle_of_the_Pods_containers.html">
+            
+                    
+                    6. Managing the lifecycle of the Pod’s containers
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="Understanding_the_pods_status.html">
+            
+                <a href="Understanding_the_pods_status.html">
+            
+                    
+                    6.1 Understanding the pod's status
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="Keeping_containers_healthy.html">
+            
+                <a href="Keeping_containers_healthy.html">
+            
+                    
+                    6.2 Keeping containers healthy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="Executing_actions_at_container_startup_and_shutdown.html">
+            
+                <a href="Executing_actions_at_container_startup_and_shutdown.html">
+            
+                    
+                    6.3 Executing actions at container start-up and shutdown
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="Understanding_the_pod_lifecycle.html">
+            
+                <a href="Understanding_the_pod_lifecycle.html">
+            
+                    
+                    6.4 Understanding the pod lifecycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="Summary_6.html">
+            
+                <a href="Summary_6.html">
+            
+                    
+                    6.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="Mounting_storage_volumes_into_the_Pods_containers.html">
+            
+                <a href="Mounting_storage_volumes_into_the_Pods_containers.html">
+            
+                    
+                    7. Mounting storage volumes into the Pod’s containers
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="Introducing_volumes.html">
+            
+                <a href="Introducing_volumes.html">
+            
+                    
+                    7.1 Introducing volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" data-path="Using_volumes.html">
+            
+                <a href="Using_volumes.html">
+            
+                    
+                    7.2 Using volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.3" data-path="Integrating_external_storage_into_pods.html">
+            
+                <a href="Integrating_external_storage_into_pods.html">
+            
+                    
+                    7.3 Integrating external storage into pods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.4" data-path="Accessing_files_on_the_worker_nodes_filesystem.html">
+            
+                <a href="Accessing_files_on_the_worker_nodes_filesystem.html">
+            
+                    
+                    7.4 Accessing files on the worker node’s filesystem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.5" data-path="Summary_7.html">
+            
+                <a href="Summary_7.html">
+            
+                    
+                    7.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="Persisting_application_data_with_PersistentVolumes.html">
+            
+                <a href="Persisting_application_data_with_PersistentVolumes.html">
+            
+                    
+                    8. Persisting application data with PersistentVolumes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="Decoupling_pods_from_the_underlying_storage_technology.html">
+            
+                <a href="Decoupling_pods_from_the_underlying_storage_technology.html">
+            
+                    
+                    8.1 Decoupling pods from the underlying storage technology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="Creating_persistent_volumes_and_claims.html">
+            
+                <a href="Creating_persistent_volumes_and_claims.html">
+            
+                    
+                    8.2 Creating persistent volumes and claims
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="Dynamic_provisioning_of_persistent_volumes.html">
+            
+                <a href="Dynamic_provisioning_of_persistent_volumes.html">
+            
+                    
+                    8.3 Dynamic provisioning of persistent volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.4" data-path="Nodelocal_persistent_volumes.html">
+            
+                <a href="Nodelocal_persistent_volumes.html">
+            
+                    
+                    8.4 Node-local persistent volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.5" data-path="Summary_8.html">
+            
+                <a href="Summary_8.html">
+            
+                    
+                    8.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="Configuring_applications_using_ConfigMaps_Secrets_and_the_Downward_API.html">
+            
+                <a href="Configuring_applications_using_ConfigMaps_Secrets_and_the_Downward_API.html">
+            
+                    
+                    9. Configuring applications using ConfigMaps, Secrets, and the Downward API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1" data-path="Setting_the_command_arguments_and_environment_variables.html">
+            
+                <a href="Setting_the_command_arguments_and_environment_variables.html">
+            
+                    
+                    9.1 Setting the command, arguments, and environment variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.2" data-path="Using_a_config_map_to_decouple_configuration_from_the_pod.html">
+            
+                <a href="Using_a_config_map_to_decouple_configuration_from_the_pod.html">
+            
+                    
+                    9.2 Using a config map to decouple configuration from the pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.3" data-path="Using_Secrets_to_pass_sensitive_data_to_containers.html">
+            
+                <a href="Using_Secrets_to_pass_sensitive_data_to_containers.html">
+            
+                    
+                    9.3 Using Secrets to pass sensitive data to containers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.6.4" data-path="Passing_pod_metadata_to_the_application_via_the_Downward_API.html">
+            
+                <a href="Passing_pod_metadata_to_the_application_via_the_Downward_API.html">
+            
+                    
+                    9.4 Passing pod metadata to the application via the Downward API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.5" data-path="Using_projected_volumes_to_combine_volumes_into_one.html">
+            
+                <a href="Using_projected_volumes_to_combine_volumes_into_one.html">
+            
+                    
+                    9.5 Using projected volumes to combine volumes into one
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.6" data-path="Summary_9.html">
+            
+                <a href="Summary_9.html">
+            
+                    
+                    9.6 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="Organizing_objects_using_Namespaces_labels.html">
+            
+                <a href="Organizing_objects_using_Namespaces_labels.html">
+            
+                    
+                    10. Organizing objects using Namespaces, labels, and selectors
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.7.1" data-path="Organizing_objects_into_Namespaces.html">
+            
+                <a href="Organizing_objects_into_Namespaces.html">
+            
+                    
+                    10.1 Organizing objects into Namespaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.2" data-path="Organizing_pods_with_labels.html">
+            
+                <a href="Organizing_pods_with_labels.html">
+            
+                    
+                    10.2 Organizing pods with labels
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.3" data-path="Filtering_Objects_With_Label_Selectors.html">
+            
+                <a href="Filtering_Objects_With_Label_Selectors.html">
+            
+                    
+                    10.3 Filtering objects with label selectors.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.4" data-path="Annotating_objects.html">
+            
+                <a href="Annotating_objects.html">
+            
+                    
+                    10.4 Annotating objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.5" data-path="Summary_10.html">
+            
+                <a href="Summary_10.html">
+            
+                    
+                    10.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="Exposing_Pods_with_Services.html">
+            
+                <a href="Exposing_Pods_with_Services.html">
+            
+                    
+                    11. Exposing Pods with Services
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.8.1" data-path="Exposing_pods_via_services.html">
+            
+                <a href="Exposing_pods_via_services.html">
+            
+                    
+                    11.1 Exposing pods via services
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.2" data-path="Exposing_services_externally.html">
+            
+                <a href="Exposing_services_externally.html">
+            
+                    
+                    11.2 Exposing services externally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.3" data-path="Managing_service_endpoints.html">
+            
+                <a href="Managing_service_endpoints.html">
+            
+                    
+                    11.3 Managing service endpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.4" data-path="Understanding_DNS_records_for_Service_objects.html">
+            
+                <a href="Understanding_DNS_records_for_Service_objects.html">
+            
+                    
+                    11.4 Understanding DNS records for Service objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.5" data-path="Configuring_services_to_route_traffic_to_nearby_endpoints.html">
+            
+                <a href="Configuring_services_to_route_traffic_to_nearby_endpoints.html">
+            
+                    
+                    11.5 Configuring services to route traffic to nearby endpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.6" data-path="Managing_the_inclusion_of_a_pod_in_service_endpoints.html">
+            
+                <a href="Managing_the_inclusion_of_a_pod_in_service_endpoints.html">
+            
+                    
+                    11.6 Managing the inclusion of a pod in service endpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.7" data-path="Summary_11.html">
+            
+                <a href="Summary_11.html">
+            
+                    
+                    11.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="Exposing_Services_with_Ingress.html">
+            
+                <a href="Exposing_Services_with_Ingress.html">
+            
+                    
+                    12. Exposing Services with Ingress
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.9.1" data-path="Introducing_Ingresses.html">
+            
+                <a href="Introducing_Ingresses.html">
+            
+                    
+                    12.1 Introducing Ingresses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.2" data-path="Creating_and_using_Ingress_objects.html">
+            
+                <a href="Creating_and_using_Ingress_objects.html">
+            
+                    
+                    12.2 Creating and using Ingress objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.3" data-path="Configuring_TLS_for_an_Ingress.html">
+            
+                <a href="Configuring_TLS_for_an_Ingress.html">
+            
+                    
+                    12.3 Configuring TLS for an Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.4" data-path="Additional_Ingress_configuration_options.html">
+            
+                <a href="Additional_Ingress_configuration_options.html">
+            
+                    
+                    12.4 Additional Ingress configuration options
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.5" data-path="Using_multiple_ingress_controllers.html">
+            
+                <a href="Using_multiple_ingress_controllers.html">
+            
+                    
+                    12.5 Using multiple ingress controllers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.6" data-path="Using_custom_resources_instead_of_services_as_backends.html">
+            
+                <a href="Using_custom_resources_instead_of_services_as_backends.html">
+            
+                    
+                    12.6 Using custom resources instead of services as backends
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.7" data-path="Summary_12.html">
+            
+                <a href="Summary_12.html">
+            
+                    
+                    12.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="Replicating_Pods_with_ReplicaSets.html">
+            
+                <a href="Replicating_Pods_with_ReplicaSets.html">
+            
+                    
+                    13 Replicating Pods with ReplicaSets
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.10.1" data-path="Introducing_ReplicaSets.html">
+            
+                <a href="Introducing_ReplicaSets.html">
+            
+                    
+                    13.1 Introducing ReplicaSets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.2" data-path="Updating_a_ReplicaSet.html">
+            
+                <a href="Updating_a_ReplicaSet.html">
+            
+                    
+                    13.2 Updating a ReplicaSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.3" data-path="Understanding_the_operation_of_the_ReplicaSet_controller.html">
+            
+                <a href="Understanding_the_operation_of_the_ReplicaSet_controller.html">
+            
+                    
+                    13.3 Understanding the operation of the ReplicaSet controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.4" data-path="Deleting_a_ReplicaSet.html">
+            
+                <a href="Deleting_a_ReplicaSet.html">
+            
+                    
+                    13.4 Deleting a ReplicaSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.5" data-path="Summary_13.html">
+            
+                <a href="Summary_13.html">
+            
+                    
+                    13.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="Managing_Pods_with_Deployments.html">
+            
+                <a href="Managing_Pods_with_Deployments.html">
+            
+                    
+                    14 Managing Pods with Deployments
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.11.1" data-path="Introducing_Deployments.html">
+            
+                <a href="Introducing_Deployments.html">
+            
+                    
+                    14.1 Introducing Deployments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.2" data-path="Updating_a_Deployment.html">
+            
+                <a href="Updating_a_Deployment.html">
+            
+                    
+                    14.2 Updating a Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.3" data-path="Implementing_other_deployment_strategies.html">
+            
+                <a href="Implementing_other_deployment_strategies.html">
+            
+                    
+                    14.3 Implementing other deployment strategies
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.4" data-path="Summary_14.html">
+            
+                <a href="Summary_14.html">
+            
+                    
+                    14.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="Deploying_stateful_workloads_with_StatefulSets.html">
+            
+                <a href="Deploying_stateful_workloads_with_StatefulSets.html">
+            
+                    
+                    15 Deploying stateful workloads with StatefulSets
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.12.1" data-path="Introducing_StatefulSets.html">
+            
+                <a href="Introducing_StatefulSets.html">
+            
+                    
+                    15.1 IntroducingStatefulSets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12.2" data-path="Understanding_StatefulSet_behavior.html">
+            
+                <a href="Understanding_StatefulSet_behavior.html">
+            
+                    
+                    15.2 Understanding StatefulSet behavior
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12.3" data-path="Updating_a_StatefulSet.html">
+            
+                <a href="Updating_a_StatefulSet.html">
+            
+                    
+                    15.3 Updating a StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12.4" data-path="Managing_stateful_applications_with_Kubernetes_Operators.html">
+            
+                <a href="Managing_stateful_applications_with_Kubernetes_Operators.html">
+            
+                    
+                    15.4 Managing stateful applications with Kubernetes Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12.5" data-path="Summary_15.html">
+            
+                <a href="Summary_15.html">
+            
+                    
+                    15.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="Deploying_node_agents_and_daemons_with_DaemonSets.html">
+            
+                <a href="Deploying_node_agents_and_daemons_with_DaemonSets.html">
+            
+                    
+                    16 Deploying node agents and daemons with DaemonSets
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.13.1" data-path="Introducing_DaemonSets.html">
+            
+                <a href="Introducing_DaemonSets.html">
+            
+                    
+                    16.1 Introducing DaemonSets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13.2" data-path="Special_features_in_Pods_running_node_agents_and_daemons.html">
+            
+                <a href="Special_features_in_Pods_running_node_agents_and_daemons.html">
+            
+                    
+                    16.2 Special features in Pods running node agents and daemons
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13.3" data-path="Communicating_with_the_local_daemon_Pod.html">
+            
+                <a href="Communicating_with_the_local_daemon_Pod.html">
+            
+                    
+                    16.3  Communicating with the local daemon Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13.4" data-path="Summary_16.html">
+            
+                <a href="Summary_16.html">
+            
+                    
+                    16.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="Running_finite_workloads_with_Jobs_and_CronJobss.html">
+            
+                <a href="Running_finite_workloads_with_Jobs_and_CronJobss.html">
+            
+                    
+                    17 Running finite workloads with Jobs and CronJobs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.14.1" data-path="Running_tasks_with_the_Job_resource.html">
+            
+                <a href="Running_tasks_with_the_Job_resource.html">
+            
+                    
+                    17.1 Running tasks with the Job resource
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14.2" data-path="Scheduling_Jobs_with_CronJobs.html">
+            
+                <a href="Scheduling_Jobs_with_CronJobs.html">
+            
+                    
+                    17.2 Scheduling Jobs with CronJobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14.3" data-path="Summary_17.html">
+            
+                <a href="Summary_17.html">
+            
+                    
+                    17.3 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >9.4 Passing pod metadata to the application via the Downward API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="94-passing-pod-metadata-to-the-application-via-the-downward-api">9.4 Passing pod metadata to the application via the Downward API</h1>
+<p>So far in this chapter, you&#x2019;ve learned how to pass configuration data to your application. But that data was always static. The values were known before you deployed the pod, and if you deployed multiple pod instances, they would all use the same values.</p>
+<p>But what about data that isn&#x2019;t known until the pod is created and scheduled to a cluster node, such as the IP of the pod, the name of the cluster node, or even the name of the pod itself? And what about data that is already specified elsewhere in the pod manifest, such as the amount of CPU and memory that is allocated to the container? Good engineers never want to repeat themselves.</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>NOTE</p>
+<p>You&#x2019;ll learn how to specify the container&#x2019;s CPU and memory limits in chapter 20.</p>
+</div></div></p>
+<h2 id="941-introducing-the-downward-api">9.4.1 Introducing the Downward API</h2>
+<p>In the remaining chapters of the book, you&#x2019;ll learn about many additional configuration options that you can set in your pods. There are cases where you need to pass the same information to your application. You could repeat this information when defining the container&#x2019;s environment variable, but a better option is to use what&#x2019;s called the Kubernetes Downward API, which allows you to expose pod and container metadata via environment variables or files.</p>
+<h4 id="understanding-what-the-downward-api-is">Understanding what the Downward API is</h4>
+<p>The Downward API isn&#x2019;t a REST endpoint that your app needs to call to get the data. It&#x2019;s simply a way to inject values from the pod&#x2019;s metadata, spec, or status fields down into the container. Hence the name. An illustration of the Downward API is shown in the following figure.</p>
+<p>Figure 9.7 The Downward API exposes pod metadata through environment variables or files.</p>
+<p><img src="../images/9.7.png" alt=""></p>
+<p>As you can see, this is no different from setting environment variables or projecting files from config maps and secrets, except that the values come from the pod object itself.</p>
+<h4 id="understanding-how-the-metadata-is-injected">Understanding how the metadata is injected</h4>
+<p>Earlier in the chapter, you learned that you initialize environment variables from external sources using the valueFrom field. To get the value from a config map, use the configMapKeyRef field, and to get it from a secret, use secretKeyRef. To instead use the Downward API to source the value from the pod object itself, use either the fieldRef or the resourceFieldRef field, depending on what information you want to inject. The former is used to refer to the pod&#x2019;s general metadata, whereas the latter is used to refer to the container&#x2019;s compute resource constraints.</p>
+<p>Alternatively, you can project the pod&#x2019;s metadata as files into the container&#x2019;s filesystem by adding a downwardAPI volume to the pod, just as you&#x2019;d add a configMap or secret volume. You&#x2019;ll learn how to do this soon, but first let&#x2019;s see what information you can inject.</p>
+<h4 id="understanding-what-metadata-can-be-injected">Understanding what metadata can be injected</h4>
+<p>You can&#x2019;t use the Downward API to inject any field from the pod object. Only certain fields are supported. The following table shows the fields you can inject via fieldRef, and whether they can only be exposed via environment variables, files, or both.</p>
+<p>Table 9.5 Downward API fields injected via the fieldRef field</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Allowed in env</th>
+<th>Allowed in volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metadata.name</td>
+<td>The pod&#x2019;s name.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metadata.namespace</td>
+<td>The pod&#x2019;s namespace.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metadata.uid</td>
+<td>The pod&#x2019;s UID.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metadata.labels</td>
+<td>All the pod&#x2019;s labels, one label per line, formatted as key=&#x201D;value&#x201D;.</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metadata.labels[&apos;key&apos;]</td>
+<td>The value of the specified label.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metadata.annotations</td>
+<td>All the pod&#x2019;s annotations, one per line, formatted as key=&#x201D;value&#x201D;.</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metadata.annotations[&apos;key&apos;]</td>
+<td>The value of the specified annotation.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>spec.nodeName</td>
+<td>The name of the worker node the pod runs on.</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>spec.serviceAccountName</td>
+<td>The name of the pod&#x2019;s service account.</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>status.podIP</td>
+<td>The pod&#x2019;s IP address.</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>status.hostIP</td>
+<td>The worker node&#x2019;s IP address.</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>You may not know most of these fields yet, but you will in the remaining chapters of this book. As you can see, some fields can only be injected into environment variables, whereas others can only be projected into files. Some allow doing both.</p>
+<p>Information about the container&#x2019;s computational resource constraints is injected via the resourceFieldRef field. They can all be injected into environment variables and via a downwardAPI volume. The following table lists them.</p>
+<p>Table 9.6 Downward API resource fields injected via the resourceFieldRef field</p>
+<table>
+<thead>
+<tr>
+<th>Resource field</th>
+<th>Description</th>
+<th>Allowed in env</th>
+<th>Allowed in vol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>requests.cpu</td>
+<td>The container&#x2019;s CPU request.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>requests.memory</td>
+<td>The container&#x2019;s memory request.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>requests.ephemeral-storage</td>
+<td>The container&#x2019;s ephemeral storage request.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>limits.cpu</td>
+<td>The container&#x2019;s CPU limit.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>limits.memory</td>
+<td>The container&#x2019;s memory limit.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>limits.ephemeral-storage</td>
+<td>The container&#x2019;s ephemeral storage limit.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>You&#x2019;ll learn what resource requests and limits are in chapter 20, which explains how to constrain the compute resources available to a container.</p>
+<p>The book&#x2019;s code repository contains the file pod.downward-api-test.yaml, which defines a pod that uses the Downward API to inject each supported field into both environment variables and files. You can deploy the pod and then look in its container log to see what was injected.</p>
+<p>A practical example of using the Downward API in the Kiada application is presented next.</p>
+<h2 id="942-injecting-pod-metadata-into-environment-variables">9.4.2 Injecting pod metadata into environment variables</h2>
+<p>At the beginning of this chapter, a new version of the Kiada application was introduced. The application now includes the pod and node names and their IP addresses in the HTTP response. You&#x2019;ll make this information available to the application through the Downward API.</p>
+<h4 id="injecting-pod-object-fields">Injecting pod object fields</h4>
+<p>The application expects the pod&#x2019;s name and IP, as well as the node name and IP, to be passed to it via the environment variables POD_NAME, POD_IP, NODE_NAME, and NODE_IP, respectively. The following listing uses the Downward API to set them.</p>
+<p>Listing 9.19 Using the Downward API in environment variables: kiada-1.2.yaml</p>
+<pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: kiada-ssl
+spec:
+  ...
+  containers:
+  - name: kiada
+    image: luksa/kiada:0.4
+    env:
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    - name: POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+    - name: NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+    - name: NODE_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
+    ports:
+    ...
+</code></pre><p>After you create this pod, you can examine its log using kubectl logs. The application prints the values of the three environment variables at startup. You can also send a request to the application and you should get a response like the following:</p>
+<pre><code class="lang-shell">Request processed by Kiada 0.4 running in pod &quot;kiada-ssl&quot; on node &quot;kind-worker&quot;. 
+Pod hostname: kiada-ssl; Pod IP: 10.244.2.15; Node IP: 172.18.0.4. Client IP: ::ffff:127.0.0.1.
+</code></pre>
+<p>Compare the values in the response with the field values in the YAML definition of the Pod object by running the command kubectl get po kiada-ssl -o yaml. Alternatively, you can compare them with the output of the following commands:</p>
+<pre><code class="lang-shell">$ kubectl get po kiada-ssl -o wide
+NAME    READY   STATUS    RESTARTS   AGE     IP            NODE         ...
+kiada   1/1     Running   0          7m41s   10.244.2.15   kind-worker  ... 
+
+$ kubectl get node kind-worker -o wide
+NAME          STATUS   ROLES    AGE   VERSION   INTERNAL-IP   ...  
+kind-worker   Ready    &lt;none&gt;   26h   v1.19.1   172.18.0.4    ...
+</code></pre>
+<p>You can also inspect the container&#x2019;s environment by running kubectl exec kiada-ssl -- env.</p>
+<h4 id="injecting-container-resource-fields">Injecting container resource fields</h4>
+<p>Even if you haven&#x2019;t yet learned how to constrain the compute resources available to a container, let&#x2019;s take a quick look at how to pass those constraints to the application when it needs them.</p>
+<p>Chapter 20 explains how to set the number of CPU cores and the amount of memory a container may consume. These settings are called CPU and memory resource limits. Kubernetes ensures that the container can&#x2019;t use more than the allocated amount.</p>
+<p>Some applications need to know how much CPU time and memory they have been given to run optimally within the given constraints. That&#x2019;s another thing the Downward API is for. The following listing shows how to expose the CPU and memory limits in environment variables.</p>
+<p>Listing 9.20 Pod with a downwardAPI volume: downward-api-volume.yaml</p>
+<pre><code>env:
+    - name: MAX_CPU_CORES
+      valueFrom:
+        resourceFieldRef:
+          resource: limits.cpu
+    - name: MAX_MEMORY_KB
+      valueFrom:
+        resourceFieldRef:
+          resource: limits.memory
+          divisor: 1k
+</code></pre><p>To inject container resource fields, the field resourceFieldRef is used. The resource field specifies the resource value that is injected.</p>
+<p>Each resourceFieldRef can also specify a divisor. It specifies which unit to use for the value. In the listing, the divisor is set to 1k. This means that the memory limit value is divided by 1000 and the result is then stored in the environment variable. So, the memory limit value in the environment variable will use kilobytes as the unit. If you don&#x2019;t specify a divisor, as is the case in the MAX_CPU_CORES variable definition in the listing, the value defaults to 1.</p>
+<p>The divisor for memory limits/requests can be 1 (byte), 1k (kilobyte) or 1Ki (kibibyte), 1M (megabyte) or 1Mi (mebibyte), and so on. The default divisor for CPU is 1, which is a whole core, but you can also set it to 1m, which is a milli core or a thousandth of a core.</p>
+<p>Because environment variables are defined within a container definition, the resource constraints of the enclosing container are used by default. In cases where a container needs to know the resource limits of another container in the pod, you can specify the name of the other container using the containerName field within resourceFieldRef.</p>
+<h2 id="943-using-a-downwardapi-volume-to-expose-pod-metadata-as-files">9.4.3 Using a downwardAPI volume to expose pod metadata as files</h2>
+<p>As with config maps and secrets, pod metadata can also be projected as files into the container&#x2019;s filesystem using the downwardAPI volume type.</p>
+<p>Suppose you want to expose the name of the pod in the /pod-metadata/pod-name file inside the container. The following listing shows the volume and volumeMount definitions you&#x2019;d add to the pod.</p>
+<p>Listing 9.21 Injecting pod metadata into the container&#x2019;s filesystem</p>
+<pre><code>...
+  volumes:
+  - name: pod-meta
+    downwardAPI:
+      items:
+      - path: pod-name.txt
+        fieldRef:
+          fieldPath: metadata.name
+  containers:
+  - name: foo
+    ...
+    volumeMounts:
+    - name: pod-meta
+      mountPath: /pod-metadata
+</code></pre><p>The pod manifest in the listing contains a single volume of type downwardAPI. The volume definition contains a single file named pod-name.txt, which contains the name of the pod read from the metadata.name field of the pod object. This volume is mounted in the container&#x2019;s filesystem at /pod-metadata.</p>
+<p>As with environment variables, each item in a downwardAPI volume definition uses either fieldRef to refer to the pod object&#x2019;s fields, or resourceFieldRef to refer to the container&#x2019;s resource fields. For resource fields, the containerName field must be specified because volumes are defined at the pod level and it isn&#x2019;t obvious which container&#x2019;s resources are being referenced. As with environment variables, a divisor can be specified to convert the value into the expected unit.</p>
+<p>As with configMap and secret volumes, you can set the default file permissions using the defaultMode field or per-file using the mode field, as explained earlier.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Using_Secrets_to_pass_sensitive_data_to_containers.html" class="navigation navigation-prev " aria-label="Previous page: 9.3 Using Secrets to pass sensitive data to containers">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Using_projected_volumes_to_combine_volumes_into_one.html" class="navigation navigation-next " aria-label="Next page: 9.5 Using projected volumes to combine volumes into one">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"9.4 Passing pod metadata to the application via the Downward API","level":"4.6.4","depth":2,"next":{"title":"9.5 Using projected volumes to combine volumes into one","level":"4.6.5","depth":2,"path":"docs/Using_projected_volumes_to_combine_volumes_into_one.md","ref":"docs/Using_projected_volumes_to_combine_volumes_into_one.md","articles":[]},"previous":{"title":"9.3 Using Secrets to pass sensitive data to containers","level":"4.6.3","depth":2,"path":"docs/Using_Secrets_to_pass_sensitive_data_to_containers.md","ref":"docs/Using_Secrets_to_pass_sensitive_data_to_containers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-toc-button","cnzz","hints","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"cnzz":{"style":"1","visible":true,"siteid":"1278605528"},"hints":{"danger":"fa fa-bug","info":"fa fa-info-circle","tip":"fa fa-sticky-note","working":"fa fa-cog fa-spin"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://wangwei1237.gitee.io/kubernetes-in-action-second-edition"},"fontsettings":{"theme":"white","family":"serif","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wangwei17","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":16,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Kubernetes实战（第二版）","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"17哥的个人网站":"https://wangwei1237.gitee.io/"}},"gitbook":"*","description":"Kubernetes实战（第二版）","extension":null},"file":{"path":"docs/Passing_pod_metadata_to_the_application_via_the_Downward_API.md","mtime":"2023-03-23T08:34:40.358Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-03-23T08:35:06.207Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-cnzz/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
